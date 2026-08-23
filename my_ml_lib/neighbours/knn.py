@@ -7,6 +7,19 @@ from my_ml_lib.metrics import euclidean_distance, manhattan_distance
 
 
 class KNNClassifier:
+    """Classifier based on K Nearest Nighbours
+
+    Parametrs
+    ---------
+    k : int, default=5
+        Number of closed neighbours
+
+    p: int, default=2
+        Represents distance used by fit() method.
+        If equals 1 -> manhattan distance
+        If equals 2 -> eucledean distance
+    """
+
     def __init__(self, k: int = 5, p: int = 2):
         self.k = k
         self._is_fitted = False
