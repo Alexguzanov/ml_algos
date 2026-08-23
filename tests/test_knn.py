@@ -21,7 +21,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
 
 for k in range(1, 10):
-    clf = KNNClassifier(k=k)
+    clf = KNNClassifier(k=k, p=k % 2 + 1)
 
     clf.fit(X_train, y_train)
     preds = clf.predict(X_test)
