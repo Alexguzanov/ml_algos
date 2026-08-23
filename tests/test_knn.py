@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
 
-from knn import KNNClassifier
+from my_ml_lib.knn.knn import KNNClassifier
+from my_ml_lib.model_selection import train_test_split
 
 RANDOM_SEED = 42
 
