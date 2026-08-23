@@ -1,8 +1,8 @@
 import pandas as pd
 
-from my_ml_lib.knn.knn import KNNClassifier
 from my_ml_lib.metrics import accuracy_score
 from my_ml_lib.model_selection import train_test_split
+from my_ml_lib.neighbours import KNNClassifier
 
 RANDOM_SEED = 42
 
