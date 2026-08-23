@@ -59,3 +59,42 @@ class KNNClassifier:
             predictions.append(pred)
 
         return np.array(predictions)
+
+
+class KNNRegressor:
+    def __init__(self, k: int = 5, p: int = 2, weighted: bool = False):
+        self.k = k
+        self.p = p
+        self._is_fitted = False
+        self.X = None
+        self.y = None
+        self.weighted = weighted
+
+    def fit(self, X: np.ndarray | pd.DataFrame, y: np.ndarray | pd.DataFrame) -> None:
+        self.X = np.asarray(X)
+        self.y = np.asarray(y)
+        self._is_fitted = True
+
+    def predict(self, X: np.ndarray | pd.DataFrame) -> np.ndarray:
+
+        if not self._is_fitted:
+            raise ValueError("you should use fit() method first before predict()")
+
+        predictions = []
+        for x in X:
+            if self.p == 1:
+                distances = manhattan_distance(x, self.X)
+            elif self.p == 2:
+                distances = euclidean_distance(x, self.X)
+            else:
+                raise ValueError("p should be either '1' or '2' ")
+
+            indices = np.argsort(distances)[: self.k]
+            if self.weighted:
+                weights = 1 / distances[indices]
+                pred = np.sum(self.y[indices] * weights) / np.sum(weights)
+            else:
+                pred = np.mean(self.y[indices])
+            predictions.append(pred)
+
+        return np.array(predictions)
