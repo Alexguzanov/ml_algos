@@ -3,6 +3,8 @@
 import numpy as np
 import pandas as pd
 
+from my_ml_lib.metrics import euclidean_distance
+
 
 class KNNClassifier:
     def __init__(self, k: int = 5):
@@ -27,7 +29,7 @@ class KNNClassifier:
         predictions = []
 
         for x in np.asarray(X_test):
-            distances = np.linalg.norm(self.X - x, axis=1)
+            distances = euclidean_distance(self.X, x)
             best_k_indicies = np.argsort(distances)[: self.k]
 
             targets = np.unique(self.y[best_k_indicies], return_counts=True)
