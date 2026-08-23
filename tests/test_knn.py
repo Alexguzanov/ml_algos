@@ -1,7 +1,7 @@
-import numpy as np
 import pandas as pd
 
 from my_ml_lib.knn.knn import KNNClassifier
+from my_ml_lib.metrics import accuracy_score
 from my_ml_lib.model_selection import train_test_split
 
 RANDOM_SEED = 42
@@ -27,6 +27,4 @@ for k in range(1, 10):
     preds = clf.predict(X_test)
     # print(preds)
     # print(np.asarray(y_test))
-    print(
-        f"Accuracy for {k} nearest neighbours: {np.mean(preds == np.asarray(y_test))}"
-    )
+    print(f"Accuracy for {k} nearest neighbours: {accuracy_score(preds, y_test)}")
