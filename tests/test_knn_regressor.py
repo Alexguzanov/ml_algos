@@ -1,8 +1,8 @@
 import numpy as np
 from sklearn.datasets import fetch_california_housing
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.neighbors import KNeighborsRegressor
 
+from my_ml_lib.metrics import mean_absolute_error, mean_squared_error, r2_score
 from my_ml_lib.model_selection import train_test_split
 from my_ml_lib.neighbors import KNNRegressor
 
@@ -53,3 +53,18 @@ print(f"MAE:  {mae:.4f} | {sk_mae:.4f}")
 print(f"MSE:  {mse:.4f} | {sk_mse:.4f}")
 print(f"RMSE: {rmse:.4f} | {sk_rmse:.4f}")
 print(f"R²:   {r2:.4f} | {sk_r2:.4f}")
+
+
+"""
+Metrics:
+MAE:  0.8013 | 0.8013
+MSE:  1.0756 | 1.0756
+RMSE: 1.0371 | 1.0371
+R²:   0.1905 | 0.1905
+
+Metrics:
+MAE:  0.8013 | 0.8013
+MSE:  1.0756 | 1.0756
+RMSE: 1.0371 | 1.0371
+R²:   0.1905 | 0.1905
+"""
